@@ -1,0 +1,14 @@
+{
+  "name": "@gjx1/uucode-linux-x64-musl",
+  "version": "1.0.0",
+  "description": "Linux x64 static binary for CCometixLine (musl libc)",
+  "files": ["uucode"],
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Haleclipse/CCometixLine"
+  },
+  "author": "Haleclipse",
+  "license": "MIT"
+}

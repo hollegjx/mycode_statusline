@@ -1,0 +1,29 @@
+# Rust build artifacts
+/target
+Cargo.lock
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Documentation and development files
+claude-powerline-features.md
+CLAUDE.md
+PRD.md
+.claude/
+tests/
+/.cache/
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+nul

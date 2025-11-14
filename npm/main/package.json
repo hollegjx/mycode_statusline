@@ -1,0 +1,28 @@
+{
+  "name": "@gjx1/uucode",
+  "version": "1.0.0",
+  "description": "CCometixLine - High-performance Claude Code StatusLine tool",
+  "bin": {
+    "uucode": "./bin/uucode.js"
+  },
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js"
+  },
+  "optionalDependencies": {
+    "@gjx1/uucode-darwin-x64": "1.0.0",
+    "@gjx1/uucode-darwin-arm64": "1.0.0",
+    "@gjx1/uucode-linux-x64": "1.0.0",
+    "@gjx1/uucode-linux-x64-musl": "1.0.0",
+    "@gjx1/uucode-win32-x64": "1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/byebye-code/uucode"
+  },
+  "keywords": ["claude", "statusline", "claude-code", "rust", "cli"],
+  "author": "Haleclipse",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

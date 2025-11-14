@@ -1,0 +1,14 @@
+{
+  "name": "@gjx1/uucode-darwin-arm64",
+  "version": "1.0.0",
+  "description": "macOS ARM64 binary for CCometixLine",
+  "files": ["uucode"],
+  "os": ["darwin"],
+  "cpu": ["arm64"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Haleclipse/CCometixLine"
+  },
+  "author": "Haleclipse",
+  "license": "MIT"
+}

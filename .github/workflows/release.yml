@@ -1,0 +1,57 @@
+name: Build uucode binaries
+
+on:
+  # 打 tag 时自动跑，比如 v1.0.0
+  push:
+    tags:
+      - "v*"
+  # 也可以在 GitHub 界面手动触发
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build for ${{ matrix.os }} (${{ matrix.target }})
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-gnu
+            artifact_name: uucode-linux-x64
+          - os: macos-latest
+            target: x86_64-apple-darwin
+            artifact_name: uucode-darwin-x64
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+            artifact_name: uucode-win32-x64
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+
+      - name: Build release binary
+        run: |
+          cargo build --release --target ${{ matrix.target }}
+
+      - name: Prepare artifact
+        shell: bash
+        run: |
+          mkdir -p dist
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            cp target/${{ matrix.target }}/release/uucode.exe dist/${{ matrix.artifact_name }}.exe
+          else
+            cp target/${{ matrix.target }}/release/uucode dist/${{ matrix.artifact_name }}
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: dist/*
+          if-no-files-found: error
