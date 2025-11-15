@@ -1,4 +1,4 @@
-use crate::api::{client::ApiClient, ApiConfig};
+use crate::api::{cache, client::ApiClient, ApiConfig};
 use crate::config::Config;
 use crate::config::InputData;
 use crate::core::segments::SegmentData;
@@ -64,7 +64,30 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
         .map(|s| s.to_string())
         .unwrap_or_else(|| "".to_string());
 
-    let usage = fetch_usage_sync(&api_key, &usage_url)?;
+    // 获取使用数据：每次先尝试请求 API，失败时回退到本地缓存
+    let mut usage = if is_uucode {
+        // 先拿到当前缓存（可能为空，用于失败回退）
+        let (cached, _needs_refresh) = cache::get_cached_usage();
+
+        // 1. 每次先尝试同步请求最新用量
+        if let Some(mut fresh) = fetch_usage_sync(&api_key, &usage_url) {
+            fresh.calculate();
+            let _ = cache::save_cached_usage(&fresh);
+            fresh
+        } else if let Some(mut cached_usage) = cached {
+            // 2. 请求失败：如果有缓存（无论是否过期）就继续显示缓存
+            cached_usage.calculate();
+            cached_usage
+        } else {
+            // 3. 既没有网络也没有缓存：整个段不显示
+            return None;
+        }
+    } else {
+        // 理论上不会走到这里（前面已经限制仅支持 uucode），保留兜底逻辑
+        let mut fresh = fetch_usage_sync(&api_key, &usage_url)?;
+        fresh.calculate();
+        fresh
+    };
 
     fn fetch_usage_sync(api_key: &str, usage_url: &str) -> Option<crate::api::UsageData> {
         let api_config = ApiConfig {

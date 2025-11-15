@@ -56,7 +56,14 @@ pub fn get_cached_subscriptions() -> (Option<Vec<SubscriptionData>>, bool) {
     };
 
     // 读取缓存
-    let cached_data: Option<Vec<SubscriptionData>> = read_cache(&cache_file);
+    let mut cached_data: Option<Vec<SubscriptionData>> = read_cache(&cache_file);
+
+    // 反序列化后补上计算字段（plan_price）
+    if let Some(ref mut subs) = cached_data {
+        for sub in subs.iter_mut() {
+            sub.format();
+        }
+    }
 
     if cached_data.is_none() {
         // 没有缓存，需要立即获取

@@ -1,4 +1,4 @@
-use crate::api::{client::ApiClient, ApiConfig};
+use crate::api::{cache, client::ApiClient, ApiConfig};
 use crate::config::Config;
 use crate::config::InputData;
 use crate::core::segments::SegmentData;
@@ -64,14 +64,40 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
         }
     };
 
-    // 实时获取数据，不使用缓存
-    let subscriptions = fetch_subscriptions_sync(&api_key)?;
+    // 订阅接口地址：允许从配置覆盖，否则使用默认 uucode 订阅接口
+    let subscription_url = segment
+        .options
+        .get("subscription_url")
+        .and_then(|v| v.as_str())
+        .filter(|s| !s.is_empty())
+        .map(|s| s.to_string())
+        .unwrap_or_else(|| "https://api.cometix.cn/v1/billing/subscription/list".to_string());
 
-    fn fetch_subscriptions_sync(api_key: &str) -> Option<Vec<crate::api::SubscriptionData>> {
+    // 订阅数据：每次先尝试请求 API，失败时回退到本地缓存
+    let (cached, _needs_refresh) = cache::get_cached_subscriptions();
+
+    let subscriptions = if let Some(fresh) =
+        fetch_subscriptions_sync(&api_key, &subscription_url)
+    {
+        let _ = cache::save_cached_subscriptions(&fresh);
+        fresh
+    } else if let Some(subs) = cached {
+        // 请求失败：如果有缓存（无论是否过期）就继续显示缓存
+        subs
+    } else {
+        // 没有缓存且请求失败：整个段不显示
+        return None;
+    };
+
+    fn fetch_subscriptions_sync(
+        api_key: &str,
+        subscription_url: &str,
+    ) -> Option<Vec<crate::api::SubscriptionData>> {
         let api_config = ApiConfig {
             enabled: true,
             api_key: api_key.to_string(),
-            ..Default::default()
+            usage_url: String::new(),
+            subscription_url: subscription_url.to_string(),
         };
 
         let client = ApiClient::new(api_config).ok()?;
