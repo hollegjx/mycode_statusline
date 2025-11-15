@@ -19,16 +19,33 @@ jobs:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
             artifact_name: uucode-linux-x64
+            npm_platform: linux-x64
+          - os: ubuntu-latest
+            target: x86_64-unknown-linux-musl
+            artifact_name: uucode-linux-x64-musl
+            npm_platform: linux-x64-musl
           - os: macos-latest
             target: x86_64-apple-darwin
             artifact_name: uucode-darwin-x64
+            npm_platform: darwin-x64
+          - os: macos-latest
+            target: aarch64-apple-darwin
+            artifact_name: uucode-darwin-arm64
+            npm_platform: darwin-arm64
           - os: windows-latest
             target: x86_64-pc-windows-msvc
             artifact_name: uucode-win32-x64
+            npm_platform: win32-x64
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Install musl tools (Linux musl only)
+        if: matrix.target == 'x86_64-unknown-linux-musl'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y musl-tools
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -42,10 +59,13 @@ jobs:
         shell: bash
         run: |
           mkdir -p dist
+          mkdir -p npm/platforms/${{ matrix.npm_platform }}
           if [ "${{ runner.os }}" = "Windows" ]; then
             cp target/${{ matrix.target }}/release/uucode.exe dist/${{ matrix.artifact_name }}.exe
+            cp target/${{ matrix.target }}/release/uucode.exe npm/platforms/${{ matrix.npm_platform }}/uucode.exe
           else
             cp target/${{ matrix.target }}/release/uucode dist/${{ matrix.artifact_name }}
+            cp target/${{ matrix.target }}/release/uucode npm/platforms/${{ matrix.npm_platform }}/uucode
           fi
 
       - name: Upload artifact
@@ -54,4 +74,25 @@ jobs:
           name: ${{ matrix.artifact_name }}
           path: dist/*
           if-no-files-found: error
+
+  release:
+    name: Create GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/**/*
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

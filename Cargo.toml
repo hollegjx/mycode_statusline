@@ -1,6 +1,6 @@
 [package]
 name = "uucode"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2021"
 description = "uucode - Claude Code 状态栏增强工具，集成用量监控等功能"
 authors = ["uucode Team"]
