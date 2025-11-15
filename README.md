@@ -180,7 +180,7 @@ echo '{"model":"sonnet-4.5","context":{"used":68200,"total":200000}}' | uucode
 | `cost` | 成本统计 | $8.68/$20 |
 | `session` | 会话 ID | session-123 |
 | `output_style` | 输出样式 | normal |
-| `uucode_status` | uucode 服务状态 | 88code正版授权服务器 |
+| `uucode_status` | uucode 服务状态 | uucode正版授权服务器 |
 | `uucode_usage` | uucode 用量信息 | $8.68/$20 |
 | `uucode_subscription` | uucode 订阅信息 | FREE ¥66.6/年 |
 
