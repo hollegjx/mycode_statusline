@@ -32,7 +32,7 @@ npm install -g @gjx1/uucode
     "ANTHROPIC_BASE_URL": "https://api.uucode.org"
   },
   "statusLine": {
-    "command": "~/.claude/uucode/uucode",
+    "command": "$HOME/.claude/uucode/uucode",
     "padding": 0,
     "type": "command"
   }
