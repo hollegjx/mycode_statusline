@@ -1,6 +1,6 @@
 {
   "name": "@gjx1/uucode",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "CCometixLine - High-performance Claude Code StatusLine tool",
   "bin": {
     "uucode": "./bin/uucode.js"
@@ -9,11 +9,11 @@
     "postinstall": "node scripts/postinstall.js"
   },
   "optionalDependencies": {
-    "@gjx1/uucode-darwin-x64": "1.0.1",
-    "@gjx1/uucode-darwin-arm64": "1.0.1",
-    "@gjx1/uucode-linux-x64": "1.0.1",
-    "@gjx1/uucode-linux-x64-musl": "1.0.1",
-    "@gjx1/uucode-win32-x64": "1.0.1"
+    "@gjx1/uucode-darwin-x64": "1.0.2",
+    "@gjx1/uucode-darwin-arm64": "1.0.2",
+    "@gjx1/uucode-linux-x64": "1.0.2",
+    "@gjx1/uucode-linux-x64-musl": "1.0.2",
+    "@gjx1/uucode-win32-x64": "1.0.2"
   },
   "repository": {
     "type": "git",
