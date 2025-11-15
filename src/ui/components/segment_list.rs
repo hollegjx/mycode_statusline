@@ -56,10 +56,10 @@ impl SegmentListComponent {
                     SegmentId::Cost => "费用",
                     SegmentId::Session => "会话",
                     SegmentId::OutputStyle => "输出样式",
-                SegmentId::Update => "更新",
-                SegmentId::UucodeUsage => "uucode 用量",
-                SegmentId::UucodeSubscription => "uucode 订阅",
-                SegmentId::UucodeStatus => "uucode 状态",
+                    SegmentId::Update => "更新",
+                    SegmentId::UucodeUsage => "uucode 用量",
+                    SegmentId::UucodeSubscription => "uucode 订阅",
+                    SegmentId::UucodeStatus => "uucode 状态",
                 };
 
                 if is_selected {

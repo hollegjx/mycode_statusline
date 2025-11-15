@@ -1,6 +1,3 @@
-pub mod uucode_status;
-pub mod uucode_subscription;
-pub mod uucode_usage;
 pub mod context_window;
 pub mod cost;
 pub mod directory;
@@ -10,6 +7,9 @@ pub mod output_style;
 pub mod session;
 pub mod update;
 pub mod usage;
+pub mod uucode_status;
+pub mod uucode_subscription;
+pub mod uucode_usage;
 
 use crate::config::{InputData, SegmentId};
 use std::collections::HashMap;

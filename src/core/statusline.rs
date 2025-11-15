@@ -296,7 +296,11 @@ impl StatusLineGenerator {
                         let split_idx = rest.find(split_marker).unwrap_or(rest.len());
                         let (payg_part, after_payg) = rest.split_at(split_idx);
 
-                        styled.push_str(&self.apply_style(payg_part, payg_color, config.styles.text_bold));
+                        styled.push_str(&self.apply_style(
+                            payg_part,
+                            payg_color,
+                            config.styles.text_bold,
+                        ));
 
                         remaining = after_payg;
                     }
@@ -315,7 +319,11 @@ impl StatusLineGenerator {
                             ));
                         }
 
-                        styled.push_str(&self.apply_style(welcome_part, welcome_color, config.styles.text_bold));
+                        styled.push_str(&self.apply_style(
+                            welcome_part,
+                            welcome_color,
+                            config.styles.text_bold,
+                        ));
 
                         if !after_welcome.is_empty() {
                             styled.push_str(&self.apply_style(

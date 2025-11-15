@@ -1,8 +1,8 @@
+use std::io::{self, IsTerminal};
 use uucode::cli::Cli;
 use uucode::config::{Config, InputData};
 use uucode::core::{collect_all_segments, StatusLineGenerator};
 use uucode::wrapper::{find_claude_code, injector::ClaudeCodeInjector};
-use std::io::{self, IsTerminal};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Migrate legacy config directory if needed
@@ -188,21 +188,18 @@ fn run_wrapper_mode(_cli: &Cli) -> Result<(), Box<dyn std::error::Error>> {
 
     // Load API keys from config
     let home = dirs::home_dir().ok_or("Could not find home directory")?;
-    let keys_path = home
-        .join(".claude")
-        .join("uucode")
-        .join("api_keys.toml");
+    let keys_path = home.join(".claude").join("uucode").join("api_keys.toml");
 
     let (_api_key, _glm_key) = if keys_path.exists() {
         use serde::Deserialize;
 
         #[derive(Deserialize)]
-                struct ApiKeys {
-                    #[serde(default)]
-                    uucode_api_key: Option<String>,
-                    #[serde(default)]
-                    glm_api_key: Option<String>,
-                }
+        struct ApiKeys {
+            #[serde(default)]
+            uucode_api_key: Option<String>,
+            #[serde(default)]
+            glm_api_key: Option<String>,
+        }
 
         let content = std::fs::read_to_string(&keys_path)?;
         let keys: ApiKeys = toml::from_str(&content)?;
