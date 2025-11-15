@@ -76,9 +76,7 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
     // 订阅数据：每次先尝试请求 API，失败时回退到本地缓存
     let (cached, _needs_refresh) = cache::get_cached_subscriptions();
 
-    let subscriptions = if let Some(fresh) =
-        fetch_subscriptions_sync(&api_key, &subscription_url)
-    {
+    let subscriptions = if let Some(fresh) = fetch_subscriptions_sync(&api_key, &subscription_url) {
         let _ = cache::save_cached_subscriptions(&fresh);
         fresh
     } else if let Some(subs) = cached {
