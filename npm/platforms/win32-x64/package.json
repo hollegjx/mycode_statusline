@@ -7,7 +7,7 @@
   "cpu": ["x64"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Haleclipse/CCometixLine"
+    "url": "https://github.com/hollegjx/uucode"
   },
   "author": "Haleclipse",
   "license": "MIT"

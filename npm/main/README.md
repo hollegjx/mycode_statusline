@@ -37,6 +37,6 @@ npm install -g @gjx1/uucode --registry https://registry.npmmirror.com
 
 ## More Information
 
-- GitHub: https://github.com/Haleclipse/CCometixLine
-- Issues: https://github.com/Haleclipse/CCometixLine/issues
+- GitHub: https://github.com/hollegjx/uucode
+- Issues: https://github.com/hollegjx/uucode/issues
 - License: MIT
