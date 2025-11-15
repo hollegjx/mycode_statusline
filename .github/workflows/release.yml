@@ -1,11 +1,11 @@
+# GitHub Actions workflow: build uucode binaries for multiple platforms
+
 name: Build uucode binaries
 
 on:
-  # 打 tag 时自动跑，比如 v1.0.0
   push:
     tags:
       - "v*"
-  # 也可以在 GitHub 界面手动触发
   workflow_dispatch:
 
 jobs:
@@ -36,8 +36,7 @@ jobs:
           targets: ${{ matrix.target }}
 
       - name: Build release binary
-        run: |
-          cargo build --release --target ${{ matrix.target }}
+        run: cargo build --release --target ${{ matrix.target }}
 
       - name: Prepare artifact
         shell: bash
@@ -55,3 +54,4 @@ jobs:
           name: ${{ matrix.artifact_name }}
           path: dist/*
           if-no-files-found: error
+
