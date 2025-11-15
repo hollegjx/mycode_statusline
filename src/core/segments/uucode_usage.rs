@@ -65,7 +65,7 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
         .unwrap_or_else(|| "".to_string());
 
     // 获取使用数据：每次先尝试请求 API，失败时回退到本地缓存
-    let mut usage = if is_uucode {
+    let usage = if is_uucode {
         // 先拿到当前缓存（可能为空，用于失败回退）
         let (cached, _needs_refresh) = cache::get_cached_usage();
 

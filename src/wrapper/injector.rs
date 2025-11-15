@@ -5,7 +5,6 @@ use std::process::{Child, Command, Stdio};
 pub struct ClaudeCodeInjector {
     claude_path: PathBuf,
     translation_enabled: bool,
-    translator: Option<()>,
 }
 
 impl ClaudeCodeInjector {
@@ -16,7 +15,6 @@ impl ClaudeCodeInjector {
         Ok(Self {
             claude_path,
             translation_enabled: false,
-            translator: None,
         })
     }
 
