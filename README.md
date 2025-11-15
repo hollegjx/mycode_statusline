@@ -7,6 +7,8 @@
 
 uucode 是一个专为 [Claude Code](https://claude.ai/code) 设计的状态栏增强工具，提供实时用量监控、成本追踪、Git 信息展示等丰富功能，支持完全自定义的主题和布局。
 
+官网：https://www.uucode.org/
+
 ## 预览
 
 ![uucode 状态栏效果](assets/img1.png)
