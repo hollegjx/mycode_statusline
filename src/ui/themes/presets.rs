@@ -129,6 +129,12 @@ impl ThemePresets {
                 separator: " | ".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_cometix::model_segment(),
                 theme_cometix::directory_segment(),
                 theme_cometix::git_segment(),
@@ -137,8 +143,11 @@ impl ThemePresets {
                 theme_cometix::cost_segment(),
                 theme_cometix::session_segment(),
                 theme_cometix::output_style_segment(),
+                // uucode segments
                 theme_cometix::uucode_usage_segment(),
                 theme_cometix::uucode_subscription_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "cometix".to_string(),
         }
@@ -151,6 +160,12 @@ impl ThemePresets {
                 separator: " | ".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_default::model_segment(),
                 theme_default::directory_segment(),
                 theme_default::git_segment(),
@@ -159,9 +174,12 @@ impl ThemePresets {
                 theme_default::cost_segment(),
                 theme_default::session_segment(),
                 theme_default::output_style_segment(),
+                // uucode segments
                 theme_default::uucode_usage_segment(),
                 theme_default::uucode_subscription_segment(),
                 theme_default::uucode_status_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "default".to_string(),
         }
@@ -174,6 +192,12 @@ impl ThemePresets {
                 separator: " │ ".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_minimal::model_segment(),
                 theme_minimal::directory_segment(),
                 theme_minimal::git_segment(),
@@ -182,8 +206,11 @@ impl ThemePresets {
                 theme_minimal::cost_segment(),
                 theme_minimal::session_segment(),
                 theme_minimal::output_style_segment(),
+                // uucode segments
                 theme_minimal::uucode_usage_segment(),
                 theme_minimal::uucode_subscription_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "minimal".to_string(),
         }
@@ -196,6 +223,12 @@ impl ThemePresets {
                 separator: " | ".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_gruvbox::model_segment(),
                 theme_gruvbox::directory_segment(),
                 theme_gruvbox::git_segment(),
@@ -204,8 +237,11 @@ impl ThemePresets {
                 theme_gruvbox::cost_segment(),
                 theme_gruvbox::session_segment(),
                 theme_gruvbox::output_style_segment(),
+                // uucode segments
                 theme_gruvbox::uucode_usage_segment(),
                 theme_gruvbox::uucode_subscription_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "gruvbox".to_string(),
         }
@@ -218,6 +254,12 @@ impl ThemePresets {
                 separator: "".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_nord::model_segment(),
                 theme_nord::directory_segment(),
                 theme_nord::git_segment(),
@@ -226,8 +268,11 @@ impl ThemePresets {
                 theme_nord::cost_segment(),
                 theme_nord::session_segment(),
                 theme_nord::output_style_segment(),
+                // uucode segments
                 theme_nord::uucode_usage_segment(),
                 theme_nord::uucode_subscription_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "nord".to_string(),
         }
@@ -237,9 +282,15 @@ impl ThemePresets {
         Config {
             style: StyleConfig {
                 mode: StyleMode::NerdFont,
-                separator: "".to_string(),
+                separator: "".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_powerline_dark::model_segment(),
                 theme_powerline_dark::directory_segment(),
                 theme_powerline_dark::git_segment(),
@@ -248,8 +299,11 @@ impl ThemePresets {
                 theme_powerline_dark::cost_segment(),
                 theme_powerline_dark::session_segment(),
                 theme_powerline_dark::output_style_segment(),
+                // uucode segments
                 theme_powerline_dark::uucode_usage_segment(),
                 theme_powerline_dark::uucode_subscription_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "powerline-dark".to_string(),
         }
@@ -259,9 +313,15 @@ impl ThemePresets {
         Config {
             style: StyleConfig {
                 mode: StyleMode::NerdFont,
-                separator: "".to_string(),
+                separator: "".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_powerline_light::model_segment(),
                 theme_powerline_light::directory_segment(),
                 theme_powerline_light::git_segment(),
@@ -270,8 +330,11 @@ impl ThemePresets {
                 theme_powerline_light::cost_segment(),
                 theme_powerline_light::session_segment(),
                 theme_powerline_light::output_style_segment(),
+                // uucode segments
                 theme_powerline_light::uucode_usage_segment(),
                 theme_powerline_light::uucode_subscription_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "powerline-light".to_string(),
         }
@@ -281,9 +344,15 @@ impl ThemePresets {
         Config {
             style: StyleConfig {
                 mode: StyleMode::NerdFont,
-                separator: "".to_string(),
+                separator: "".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_powerline_rose_pine::model_segment(),
                 theme_powerline_rose_pine::directory_segment(),
                 theme_powerline_rose_pine::git_segment(),
@@ -292,8 +361,11 @@ impl ThemePresets {
                 theme_powerline_rose_pine::cost_segment(),
                 theme_powerline_rose_pine::session_segment(),
                 theme_powerline_rose_pine::output_style_segment(),
+                // uucode segments
                 theme_powerline_rose_pine::uucode_usage_segment(),
                 theme_powerline_rose_pine::uucode_subscription_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "powerline-rose-pine".to_string(),
         }
@@ -303,9 +375,15 @@ impl ThemePresets {
         Config {
             style: StyleConfig {
                 mode: StyleMode::NerdFont,
-                separator: "".to_string(),
+                separator: "".to_string(),
             },
             segments: vec![
+                // cubence segments (放在最前面)
+                theme_cometix::cubence_status_segment(),
+                theme_cometix::cubence_five_hour_segment(),
+                theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_balance_segment(),
+                // 基础 segments
                 theme_powerline_tokyo_night::model_segment(),
                 theme_powerline_tokyo_night::directory_segment(),
                 theme_powerline_tokyo_night::git_segment(),
@@ -314,8 +392,11 @@ impl ThemePresets {
                 theme_powerline_tokyo_night::cost_segment(),
                 theme_powerline_tokyo_night::session_segment(),
                 theme_powerline_tokyo_night::output_style_segment(),
+                // uucode segments
                 theme_powerline_tokyo_night::uucode_usage_segment(),
                 theme_powerline_tokyo_night::uucode_subscription_segment(),
+                // 负载状态放最后
+                theme_cometix::cubence_load_status_segment(),
             ],
             theme: "powerline-tokyo-night".to_string(),
         }

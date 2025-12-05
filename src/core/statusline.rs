@@ -585,6 +585,14 @@ pub fn collect_all_segments(
                 uucode_subscription::collect(config, input)
             }
             crate::config::SegmentId::UucodeStatus => uucode_status::collect(config, input),
+            crate::config::SegmentId::CubenceBalance => cubence_balance::collect(config, input),
+            crate::config::SegmentId::CubenceUsage => cubence_usage::collect(config, input),
+            crate::config::SegmentId::CubenceStatus => cubence_status::collect(config, input),
+            crate::config::SegmentId::CubenceFiveHour => cubence_five_hour::collect(config, input),
+            crate::config::SegmentId::CubenceWeekly => cubence_weekly::collect(config, input),
+            crate::config::SegmentId::CubenceLoadStatus => {
+                cubence_load_status::collect(config, input)
+            }
         };
 
         if let Some(data) = segment_data {

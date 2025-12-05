@@ -506,6 +506,12 @@ impl App {
                         SegmentId::UucodeUsage => "uucode Usage",
                         SegmentId::UucodeSubscription => "uucode Subscription",
                         SegmentId::UucodeStatus => "uucode Status",
+                        SegmentId::CubenceBalance => "Cubence Balance",
+                        SegmentId::CubenceUsage => "Cubence Usage",
+                        SegmentId::CubenceStatus => "Cubence Status",
+                        SegmentId::CubenceFiveHour => "Cubence 5h Window",
+                        SegmentId::CubenceWeekly => "Cubence Weekly",
+                        SegmentId::CubenceLoadStatus => "Cubence Load Status",
                     };
                     let is_enabled = segment.enabled;
                     self.status_message = Some(format!(
@@ -536,6 +542,12 @@ impl App {
                                 SegmentId::UucodeUsage => "uucode Usage",
                                 SegmentId::UucodeSubscription => "uucode Subscription",
                                 SegmentId::UucodeStatus => "uucode Status",
+                                SegmentId::CubenceBalance => "Cubence Balance",
+                                SegmentId::CubenceUsage => "Cubence Usage",
+                                SegmentId::CubenceStatus => "Cubence Status",
+                                SegmentId::CubenceFiveHour => "Cubence 5h Window",
+                                SegmentId::CubenceWeekly => "Cubence Weekly",
+                                SegmentId::CubenceLoadStatus => "Cubence Load Status",
                             };
                             let is_enabled = segment.enabled;
                             self.status_message = Some(format!(

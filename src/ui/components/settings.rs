@@ -39,6 +39,12 @@ impl SettingsComponent {
                 SegmentId::UucodeUsage => "uucode 用量",
                 SegmentId::UucodeSubscription => "uucode 订阅",
                 SegmentId::UucodeStatus => "uucode 状态",
+                SegmentId::CubenceBalance => "Cubence 余额",
+                SegmentId::CubenceUsage => "Cubence 用量",
+                SegmentId::CubenceStatus => "Cubence 标识",
+                SegmentId::CubenceFiveHour => "Cubence 5h窗口",
+                SegmentId::CubenceWeekly => "Cubence 周窗口",
+                SegmentId::CubenceLoadStatus => "Cubence 负载",
             };
             let current_icon = match config.style.mode {
                 StyleMode::Plain => &segment.icon.plain,

@@ -76,6 +76,12 @@ pub enum SegmentId {
     UucodeUsage,
     UucodeSubscription,
     UucodeStatus,
+    CubenceBalance,
+    CubenceUsage,      // 保留用于兼容，但不再使用
+    CubenceStatus,     // 改为 Cubence 标识段 (🦢 Cubence)
+    CubenceFiveHour,   // 5小时窗口段（带进度条）
+    CubenceWeekly,     // 周窗口段（带进度条）
+    CubenceLoadStatus, // Claude Pool 负载状态段
 }
 
 // Legacy compatibility structure

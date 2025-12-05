@@ -230,3 +230,113 @@ pub fn uucode_status_segment() -> SegmentConfig {
         options: HashMap::new(),
     }
 }
+
+// ============== Cubence Segments ==============
+
+pub fn cubence_balance_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceBalance,
+        enabled: true,
+        icon: IconConfig {
+            plain: "💰".to_string(),
+            nerd_font: "\u{f0316}".to_string(), // nf-md-cash
+        },
+        colors: ColorConfig {
+            icon: Some(AnsiColor::Color256 { c256: 220 }), // Gold
+            text: Some(AnsiColor::Color256 { c256: 255 }), // White
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: false },
+        options: HashMap::new(),
+    }
+}
+
+pub fn cubence_usage_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceUsage,
+        enabled: true,
+        icon: IconConfig {
+            plain: "📊".to_string(),
+            nerd_font: "\u{f0690}".to_string(), // nf-md-gauge
+        },
+        colors: ColorConfig {
+            icon: Some(AnsiColor::Color256 { c256: 39 }),  // Blue
+            text: Some(AnsiColor::Color256 { c256: 255 }), // White
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: false },
+        options: HashMap::new(),
+    }
+}
+
+pub fn cubence_status_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceStatus,
+        enabled: true,
+        icon: IconConfig {
+            plain: "🦢".to_string(),
+            nerd_font: "🦢".to_string(),
+        },
+        colors: ColorConfig {
+            icon: Some(AnsiColor::Color256 { c256: 255 }), // White
+            text: Some(AnsiColor::Color256 { c256: 255 }), // White
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: true },
+        options: HashMap::new(),
+    }
+}
+
+pub fn cubence_five_hour_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceFiveHour,
+        enabled: true,
+        icon: IconConfig {
+            plain: "⏱".to_string(),
+            nerd_font: "\u{f0690}".to_string(), // nf-md-gauge
+        },
+        colors: ColorConfig {
+            icon: Some(AnsiColor::Color256 { c256: 39 }),  // Blue
+            text: Some(AnsiColor::Color256 { c256: 255 }), // White
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: false },
+        options: HashMap::new(),
+    }
+}
+
+pub fn cubence_weekly_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceWeekly,
+        enabled: true,
+        icon: IconConfig {
+            plain: "📅".to_string(),
+            nerd_font: "\u{f0333}".to_string(), // nf-md-calendar-week
+        },
+        colors: ColorConfig {
+            icon: Some(AnsiColor::Color256 { c256: 208 }), // Orange
+            text: Some(AnsiColor::Color256 { c256: 255 }),  // White
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: false },
+        options: HashMap::new(),
+    }
+}
+
+pub fn cubence_load_status_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceLoadStatus,
+        enabled: true,
+        icon: IconConfig {
+            plain: "".to_string(), // 图标已包含在内容中
+            nerd_font: "".to_string(),
+        },
+        colors: ColorConfig {
+            icon: None,
+            text: Some(AnsiColor::Color256 { c256: 255 }), // White
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: false },
+        options: HashMap::new(),
+    }
+}

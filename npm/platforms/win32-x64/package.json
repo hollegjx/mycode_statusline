@@ -1,13 +1,13 @@
 {
-  "name": "@gjx1/uucode-win32-x64",
+  "name": "@gjx1/mycode-win32-x64",
   "version": "1.0.2",
   "description": "Windows x64 binary for CCometixLine",
-  "files": ["uucode.exe"],
+  "files": ["mycode.exe"],
   "os": ["win32"],
   "cpu": ["x64"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/hollegjx/uucode"
+    "url": "https://github.com/hollegjx/mycode"
   },
   "author": "Haleclipse",
   "license": "MIT"

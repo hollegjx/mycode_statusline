@@ -204,6 +204,73 @@ impl PreviewComponent {
                     secondary: "".to_string(),
                     metadata: HashMap::new(),
                 },
+                SegmentId::CubenceBalance => SegmentData {
+                    primary: "$74.02".to_string(),
+                    secondary: "".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("balance_usd".to_string(), "74.02".to_string());
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
+                SegmentId::CubenceUsage => SegmentData {
+                    primary: "⏱ 18.4M/80M (23%)".to_string(),
+                    secondary: "📅 103.4M/200M (52%) | 5h重置: 3h12m | 周重置: 5天8h".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("five_hour_used".to_string(), "18436683".to_string());
+                        map.insert("five_hour_limit".to_string(), "80000000".to_string());
+                        map.insert("weekly_used".to_string(), "103360328".to_string());
+                        map.insert("weekly_limit".to_string(), "200000000".to_string());
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
+                SegmentId::CubenceStatus => SegmentData {
+                    primary: "Cubence".to_string(),
+                    secondary: "".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
+                SegmentId::CubenceFiveHour => SegmentData {
+                    primary: "5h ████░░░░ 36.1M/80M (3h12m)".to_string(),
+                    secondary: "".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("five_hour_used".to_string(), "36100000".to_string());
+                        map.insert("five_hour_limit".to_string(), "80000000".to_string());
+                        map.insert("five_hour_percentage".to_string(), "45.1".to_string());
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
+                SegmentId::CubenceWeekly => SegmentData {
+                    primary: "周 █████░░░ 121M/200M (3d5h)".to_string(),
+                    secondary: "".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("weekly_used".to_string(), "121000000".to_string());
+                        map.insert("weekly_limit".to_string(), "200000000".to_string());
+                        map.insert("weekly_percentage".to_string(), "60.5".to_string());
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
+                SegmentId::CubenceLoadStatus => SegmentData {
+                    primary: "🚴 负载：23%[轻点蹬🚲]".to_string(),
+                    secondary: "".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("load_percentage".to_string(), "23.0".to_string());
+                        map.insert("load_level".to_string(), "normal".to_string());
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
             };
 
             segments_data.push((segment_config.clone(), mock_data));

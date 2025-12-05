@@ -1,8 +1,8 @@
 use std::io::{self, IsTerminal};
-use uucode::cli::Cli;
-use uucode::config::{Config, InputData};
-use uucode::core::{collect_all_segments, StatusLineGenerator};
-use uucode::wrapper::{find_claude_code, injector::ClaudeCodeInjector};
+use mycode::cli::Cli;
+use mycode::config::{Config, InputData};
+use mycode::core::{collect_all_segments, StatusLineGenerator};
+use mycode::wrapper::{find_claude_code, injector::ClaudeCodeInjector};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Migrate legacy config directory if needed
@@ -21,7 +21,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         // 自动配置 Claude Code settings.json
         println!("\n正在配置 Claude Code settings.json...");
-        match uucode::auto_config::ClaudeSettingsConfigurator::configure_statusline() {
+        match mycode::auto_config::ClaudeSettingsConfigurator::configure_statusline() {
             Ok(_) => {}
             Err(e) => {
                 eprintln!("⚠ 配置 Claude settings.json 失败: {}", e);
@@ -37,7 +37,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
         // Apply theme override if provided
         if let Some(theme) = cli.theme {
-            config = uucode::ui::themes::ThemePresets::get_theme(&theme);
+            config = mycode::ui::themes::ThemePresets::get_theme(&theme);
         }
 
         config.print()?;
@@ -54,7 +54,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     if cli.config {
         #[cfg(feature = "tui")]
         {
-            uucode::ui::run_configurator()?;
+            mycode::ui::run_configurator()?;
         }
         #[cfg(not(feature = "tui"))]
         {
@@ -78,7 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Handle Claude Code patcher
     if let Some(claude_path) = cli.patch {
-        use uucode::utils::ClaudeCodePatcher;
+        use mycode::utils::ClaudeCodePatcher;
 
         println!("🔧 Claude Code Context Warning Disabler");
         println!("Target file: {}", claude_path);
@@ -126,7 +126,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Apply theme override if provided
     if let Some(theme) = cli.theme {
-        config = uucode::ui::themes::ThemePresets::get_theme(&theme);
+        config = mycode::ui::themes::ThemePresets::get_theme(&theme);
     }
 
     // Check if stdin has data
@@ -134,19 +134,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         // No input data available, show main menu
         #[cfg(feature = "tui")]
         {
-            use uucode::ui::{MainMenu, MenuResult};
+            use mycode::ui::{MainMenu, MenuResult};
 
             if let Some(result) = MainMenu::run()? {
                 match result {
                     MenuResult::LaunchConfigurator => {
-                        uucode::ui::run_configurator()?;
+                        mycode::ui::run_configurator()?;
                     }
                     MenuResult::InitConfig => {
-                        uucode::config::Config::init()?;
+                        mycode::config::Config::init()?;
                         println!("Configuration initialized successfully!");
                     }
                     MenuResult::CheckConfig => {
-                        let config = uucode::config::Config::load()?;
+                        let config = mycode::config::Config::load()?;
                         config.check()?;
                         println!("Configuration is valid!");
                     }

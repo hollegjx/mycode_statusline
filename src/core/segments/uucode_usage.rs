@@ -1,4 +1,4 @@
-use crate::api::{cache, client::ApiClient, ApiConfig};
+use crate::api::{cache, client::ApiClient, ApiConfig, VendorType};
 use crate::config::Config;
 use crate::config::InputData;
 use crate::core::segments::SegmentData;
@@ -12,6 +12,13 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
         .find(|s| matches!(s.id, crate::config::SegmentId::UucodeUsage))?;
 
     if !segment.enabled {
+        return None;
+    }
+
+    // 检查是否是 uucode 服务商，不是则不显示此段（静默跳过）
+    let vendor = crate::api::detect_vendor_from_claude_settings();
+    if vendor != VendorType::Uucode {
+        // 不是 uucode 服务商，静默跳过此段
         return None;
     }
 
@@ -45,17 +52,6 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
         .unwrap_or_else(|| "https://api.uucode.org/account/billing".to_string());
 
     let is_uucode = usage_url.contains("uucode.org");
-
-    // 只支持 uucode，其它服务直接给出提示，不再发起 API 请求
-    if !is_uucode {
-        let mut metadata = HashMap::new();
-        metadata.insert("service".to_string(), "unsupported".to_string());
-        return Some(SegmentData {
-            primary: "仅支持 uucode，用量段已禁用".to_string(),
-            secondary: String::new(),
-            metadata,
-        });
-    }
 
     let subscription_url = segment
         .options
@@ -95,6 +91,8 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
             api_key: api_key.to_string(),
             usage_url: usage_url.to_string(),
             subscription_url: String::new(),
+            auto_cookie: false,
+            cookie: None,
         };
 
         let client = ApiClient::new(api_config).ok()?;
@@ -309,6 +307,8 @@ fn fetch_subscriptions_sync(
         api_key: api_key.to_string(),
         usage_url: String::new(),
         subscription_url: subscription_url.to_string(),
+        auto_cookie: false,
+        cookie: None,
     };
 
     let client = ApiClient::new(api_config).ok()?;

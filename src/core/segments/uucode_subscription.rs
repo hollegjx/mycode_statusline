@@ -1,4 +1,4 @@
-use crate::api::{cache, client::ApiClient, ApiConfig};
+use crate::api::{cache, client::ApiClient, ApiConfig, VendorType};
 use crate::config::Config;
 use crate::config::InputData;
 use crate::core::segments::SegmentData;
@@ -41,6 +41,12 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
         .find(|s| matches!(s.id, crate::config::SegmentId::UucodeSubscription))?;
 
     if !segment.enabled {
+        return None;
+    }
+
+    // 检查是否是 uucode 服务商，不是则静默跳过
+    let vendor = crate::api::detect_vendor_from_claude_settings();
+    if vendor != VendorType::Uucode {
         return None;
     }
 
@@ -96,6 +102,8 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
             api_key: api_key.to_string(),
             usage_url: String::new(),
             subscription_url: subscription_url.to_string(),
+            auto_cookie: false,
+            cookie: None,
         };
 
         let client = ApiClient::new(api_config).ok()?;

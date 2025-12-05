@@ -1,10 +1,12 @@
-use super::{ApiConfig, SubscriptionData, UsageData};
+use super::{ApiConfig, CubenceData, CubenceResponse, SubscriptionData, UsageData};
 use reqwest::blocking::Client;
 use std::time::Duration;
 
 pub struct ApiClient {
     config: ApiConfig,
     client: Client,
+    /// 缓存的 Cookie（手动配置）
+    cached_cookie: Option<String>,
 }
 
 impl ApiClient {
@@ -14,11 +16,32 @@ impl ApiClient {
             .user_agent("uucode/1.0.0")
             .build()?;
 
-        Ok(Self { config, client })
+        // 获取 Cookie：使用手动配置
+        let cached_cookie = config.cookie.clone();
+
+        Ok(Self {
+            config,
+            client,
+            cached_cookie,
+        })
+    }
+
+    /// 获取当前使用的 Cookie
+    pub fn get_cookie(&self) -> Option<&str> {
+        self.cached_cookie.as_deref()
     }
 
     pub fn get_usage(&self) -> Result<UsageData, Box<dyn std::error::Error>> {
-        // 仅支持 uucode：统一使用 GET + X-API-Key 访问 /account/billing
+        // 根据 URL 判断是哪个服务商
+        if self.config.usage_url.contains("cubence.com") {
+            self.get_cubence_usage()
+        } else {
+            self.get_uucode_usage()
+        }
+    }
+
+    /// 获取 uucode 用量数据
+    fn get_uucode_usage(&self) -> Result<UsageData, Box<dyn std::error::Error>> {
         let response = self
             .client
             .get(&self.config.usage_url)
@@ -44,6 +67,37 @@ impl ApiClient {
 
         usage.calculate();
         Ok(usage)
+    }
+
+    /// 获取 Cubence 用量数据
+    fn get_cubence_usage(&self) -> Result<UsageData, Box<dyn std::error::Error>> {
+        let mut request = self
+            .client
+            .get(&self.config.usage_url)
+            .header("Authorization", &self.config.api_key);
+
+        // 如果有 Cookie，添加到请求头
+        if let Some(ref cookie) = self.cached_cookie {
+            request = request.header("Cookie", cookie);
+        }
+
+        let response = request.send()?;
+
+        if !response.status().is_success() {
+            return Err(format!("Cubence API request failed: {}", response.status()).into());
+        }
+
+        let response_text = response.text()?;
+
+        let resp: CubenceResponse = serde_json::from_str(&response_text).map_err(|e| {
+            format!(
+                "Cubence JSON parse error: {} | Response: {}",
+                e, response_text
+            )
+        })?;
+
+        let data = CubenceData::from_response(resp);
+        Ok(UsageData::Cubence(data))
     }
 
     pub fn get_subscriptions(&self) -> Result<Vec<SubscriptionData>, Box<dyn std::error::Error>> {

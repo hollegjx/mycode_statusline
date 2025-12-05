@@ -1,17 +1,17 @@
 [package]
-name = "uucode"
+name = "mycode"
 version = "1.0.2"
 edition = "2021"
-description = "uucode - Claude Code 状态栏增强工具，集成用量监控等功能"
-authors = ["uucode Team"]
+description = "mycode - Claude Code 状态栏增强工具，集成用量监控等功能"
+authors = ["mycode Team"]
 license = "MIT"
-repository = "https://github.com/hollegjx/uucode"
+repository = "https://github.com/hollegjx/mycode"
 readme = "README.md"
-keywords = ["claude", "statusline", "uucode", "claude-code"]
+keywords = ["claude", "statusline", "mycode", "claude-code"]
 categories = ["command-line-utilities", "development-tools"]
 
 [[bin]]
-name = "uucode"
+name = "mycode"
 path = "src/main.rs"
 
 [dependencies]
@@ -34,6 +34,11 @@ regex = "1.0"
 reqwest = { version = "0.11", default-features = false, features = ["json", "blocking", "rustls-tls", "gzip"] }
 base64 = "0.21"
 which = "6.0"
+rusqlite = { version = "0.31", features = ["bundled"] }
+aes-gcm = "0.10"
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = ["Win32_Security_Cryptography", "Win32_System_Memory", "Win32_Foundation", "Win32_Storage_FileSystem", "Win32_System_IO"] }
 
 [features]
 default = ["tui", "self-update", "dirs"]
