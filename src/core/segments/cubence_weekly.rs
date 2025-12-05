@@ -126,6 +126,11 @@ fn format_duration(seconds: i64) -> String {
     }
 }
 
+/// ANSI 颜色代码
+const GREEN: &str = "\x1b[32m";
+const YELLOW: &str = "\x1b[33m";
+const RESET: &str = "\x1b[0m";
+
 fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     let mut metadata = HashMap::new();
 
@@ -142,12 +147,12 @@ fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     let reset_str = format_duration(data.get_weekly_reset_seconds());
     let progress_bar = make_progress_bar(data.weekly_percentage, 8);
 
-    // 主显示：周 [进度条] 121M/200M (3d5h)
+    // 主显示：周 [进度条(绿色)] 数字(黄色) (重置时间)
+    // 格式: 周 █████░░░ $121.0/$200.0 (3d5h)
     let primary = format!(
-        "周 {} {}/{} ({})",
-        progress_bar,
-        used_fmt,
-        limit_fmt,
+        "周 {}{}{} {}{}/{}{} ({})",
+        GREEN, progress_bar, RESET,
+        YELLOW, used_fmt, limit_fmt, RESET,
         reset_str
     );
 

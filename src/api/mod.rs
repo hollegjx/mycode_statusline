@@ -422,14 +422,14 @@ impl CubenceData {
         self.is_five_hour_exhausted() && self.is_weekly_exhausted()
     }
 
-    /// 格式化 token 数量为可读字符串（如 18.4M）
+    /// 格式化 token 数量为美元字符串（1M = $1）
     pub fn format_tokens(tokens: i64) -> String {
         if tokens >= 1_000_000 {
-            format!("{:.1}M", tokens as f64 / 1_000_000.0)
+            format!("${:.1}", tokens as f64 / 1_000_000.0)
         } else if tokens >= 1_000 {
-            format!("{:.1}K", tokens as f64 / 1_000.0)
+            format!("${:.2}", tokens as f64 / 1_000_000.0)
         } else {
-            tokens.to_string()
+            format!("${:.3}", tokens as f64 / 1_000_000.0)
         }
     }
 

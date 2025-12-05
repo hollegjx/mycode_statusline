@@ -133,9 +133,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_cometix::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_cometix::directory_segment(),
                 theme_cometix::git_segment(),
                 theme_cometix::context_window_segment(),
@@ -148,6 +150,8 @@ impl ThemePresets {
                 theme_cometix::uucode_subscription_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "cometix".to_string(),
         }
@@ -164,9 +168,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_default::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_default::directory_segment(),
                 theme_default::git_segment(),
                 theme_default::context_window_segment(),
@@ -180,6 +186,8 @@ impl ThemePresets {
                 theme_default::uucode_status_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "default".to_string(),
         }
@@ -196,9 +204,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_minimal::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_minimal::directory_segment(),
                 theme_minimal::git_segment(),
                 theme_minimal::context_window_segment(),
@@ -211,6 +221,8 @@ impl ThemePresets {
                 theme_minimal::uucode_subscription_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "minimal".to_string(),
         }
@@ -227,9 +239,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_gruvbox::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_gruvbox::directory_segment(),
                 theme_gruvbox::git_segment(),
                 theme_gruvbox::context_window_segment(),
@@ -242,6 +256,8 @@ impl ThemePresets {
                 theme_gruvbox::uucode_subscription_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "gruvbox".to_string(),
         }
@@ -258,9 +274,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_nord::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_nord::directory_segment(),
                 theme_nord::git_segment(),
                 theme_nord::context_window_segment(),
@@ -273,6 +291,8 @@ impl ThemePresets {
                 theme_nord::uucode_subscription_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "nord".to_string(),
         }
@@ -289,9 +309,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_powerline_dark::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_powerline_dark::directory_segment(),
                 theme_powerline_dark::git_segment(),
                 theme_powerline_dark::context_window_segment(),
@@ -304,6 +326,8 @@ impl ThemePresets {
                 theme_powerline_dark::uucode_subscription_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "powerline-dark".to_string(),
         }
@@ -320,9 +344,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_powerline_light::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_powerline_light::directory_segment(),
                 theme_powerline_light::git_segment(),
                 theme_powerline_light::context_window_segment(),
@@ -335,6 +361,8 @@ impl ThemePresets {
                 theme_powerline_light::uucode_subscription_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "powerline-light".to_string(),
         }
@@ -351,9 +379,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_powerline_rose_pine::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_powerline_rose_pine::directory_segment(),
                 theme_powerline_rose_pine::git_segment(),
                 theme_powerline_rose_pine::context_window_segment(),
@@ -366,6 +396,8 @@ impl ThemePresets {
                 theme_powerline_rose_pine::uucode_subscription_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "powerline-rose-pine".to_string(),
         }
@@ -382,9 +414,11 @@ impl ThemePresets {
                 theme_cometix::cubence_status_segment(),
                 theme_cometix::cubence_five_hour_segment(),
                 theme_cometix::cubence_weekly_segment(),
+                theme_cometix::cubence_subscription_segment(), // 订阅放在余额前
                 theme_cometix::cubence_balance_segment(),
                 // 基础 segments
                 theme_powerline_tokyo_night::model_segment(),
+                theme_cometix::cubence_multiplier_segment(), // 紧跟在模型后面显示倍率
                 theme_powerline_tokyo_night::directory_segment(),
                 theme_powerline_tokyo_night::git_segment(),
                 theme_powerline_tokyo_night::context_window_segment(),
@@ -397,6 +431,8 @@ impl ThemePresets {
                 theme_powerline_tokyo_night::uucode_subscription_segment(),
                 // 负载状态放最后
                 theme_cometix::cubence_load_status_segment(),
+                // 延迟放在最末尾
+                theme_cometix::cubence_latency_segment(),
             ],
             theme: "powerline-tokyo-night".to_string(),
         }

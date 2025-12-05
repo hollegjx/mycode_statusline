@@ -61,8 +61,12 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
     metadata.insert("balance_usd".to_string(), format!("{:.2}", cubence_data.balance_usd));
     metadata.insert("service".to_string(), "cubence".to_string());
 
+    // 金色/黄色 ANSI 代码
+    const GOLD: &str = "\x1b[38;5;220m";
+    const RESET: &str = "\x1b[0m";
+
     Some(SegmentData {
-        primary: format!("${:.2}", cubence_data.balance_usd),
+        primary: format!("{}${:.2}{}", GOLD, cubence_data.balance_usd, RESET),
         secondary: String::new(),
         metadata,
     })

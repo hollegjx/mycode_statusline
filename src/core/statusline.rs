@@ -259,11 +259,21 @@ impl StatusLineGenerator {
         } else {
             // No background color, use original logic
             let icon_colored = self.apply_color(&icon, config.colors.icon.as_ref());
-            let text_styled = self.apply_style(
-                &data.primary,
-                config.colors.text.as_ref(),
-                config.styles.text_bold,
-            );
+
+            // 检查是否已包含 ANSI 颜色（通过 metadata 标记或检测转义序列）
+            let has_ansi_colors = data.primary.contains("\x1b[")
+                || data.metadata.get("has_ansi_colors").map(|v| v == "true").unwrap_or(false);
+
+            let text_styled = if has_ansi_colors {
+                // 已包含 ANSI 颜色，不再包裹
+                data.primary.clone()
+            } else {
+                self.apply_style(
+                    &data.primary,
+                    config.colors.text.as_ref(),
+                    config.styles.text_bold,
+                )
+            };
 
             let mut segment = format!("{} {}", icon_colored, text_styled);
 
@@ -592,6 +602,13 @@ pub fn collect_all_segments(
             crate::config::SegmentId::CubenceWeekly => cubence_weekly::collect(config, input),
             crate::config::SegmentId::CubenceLoadStatus => {
                 cubence_load_status::collect(config, input)
+            }
+            crate::config::SegmentId::CubenceLatency => cubence_latency::collect(config, input),
+            crate::config::SegmentId::CubenceSubscription => {
+                cubence_subscription::collect(config, input)
+            }
+            crate::config::SegmentId::CubenceMultiplier => {
+                cubence_multiplier::collect(config, input)
             }
         };
 

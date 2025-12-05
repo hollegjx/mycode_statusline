@@ -45,6 +45,9 @@ impl SettingsComponent {
                 SegmentId::CubenceFiveHour => "Cubence 5h窗口",
                 SegmentId::CubenceWeekly => "Cubence 周窗口",
                 SegmentId::CubenceLoadStatus => "Cubence 负载",
+                SegmentId::CubenceLatency => "Cubence 延迟",
+                SegmentId::CubenceSubscription => "Cubence 订阅",
+                SegmentId::CubenceMultiplier => "Cubence 倍率",
             };
             let current_icon = match config.style.mode {
                 StyleMode::Plain => &segment.icon.plain,

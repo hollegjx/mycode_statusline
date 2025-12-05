@@ -512,6 +512,9 @@ impl App {
                         SegmentId::CubenceFiveHour => "Cubence 5h Window",
                         SegmentId::CubenceWeekly => "Cubence Weekly",
                         SegmentId::CubenceLoadStatus => "Cubence Load Status",
+                        SegmentId::CubenceLatency => "Cubence Latency",
+                        SegmentId::CubenceSubscription => "Cubence Subscription",
+                        SegmentId::CubenceMultiplier => "Cubence Multiplier",
                     };
                     let is_enabled = segment.enabled;
                     self.status_message = Some(format!(
@@ -548,6 +551,9 @@ impl App {
                                 SegmentId::CubenceFiveHour => "Cubence 5h Window",
                                 SegmentId::CubenceWeekly => "Cubence Weekly",
                                 SegmentId::CubenceLoadStatus => "Cubence Load Status",
+                                SegmentId::CubenceLatency => "Cubence Latency",
+                                SegmentId::CubenceSubscription => "Cubence Subscription",
+                                SegmentId::CubenceMultiplier => "Cubence Multiplier",
                             };
                             let is_enabled = segment.enabled;
                             self.status_message = Some(format!(

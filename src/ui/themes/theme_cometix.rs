@@ -340,3 +340,57 @@ pub fn cubence_load_status_segment() -> SegmentConfig {
         options: HashMap::new(),
     }
 }
+
+pub fn cubence_latency_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceLatency,
+        enabled: true,
+        icon: IconConfig {
+            plain: "".to_string(), // 图标已包含在内容中
+            nerd_font: "".to_string(),
+        },
+        colors: ColorConfig {
+            icon: None,
+            text: Some(AnsiColor::Color256 { c256: 255 }), // White
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: false },
+        options: HashMap::new(),
+    }
+}
+
+pub fn cubence_subscription_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceSubscription,
+        enabled: true,
+        icon: IconConfig {
+            plain: "".to_string(), // 图标已包含在内容中
+            nerd_font: "".to_string(),
+        },
+        colors: ColorConfig {
+            icon: None,
+            text: Some(AnsiColor::Color256 { c256: 141 }), // 紫色
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: false },
+        options: HashMap::new(),
+    }
+}
+
+pub fn cubence_multiplier_segment() -> SegmentConfig {
+    SegmentConfig {
+        id: SegmentId::CubenceMultiplier,
+        enabled: true,
+        icon: IconConfig {
+            plain: "".to_string(), // 无图标，直接显示 (x0.75)
+            nerd_font: "".to_string(),
+        },
+        colors: ColorConfig {
+            icon: None,
+            text: Some(AnsiColor::Color256 { c256: 220 }), // 金色
+            background: None,
+        },
+        styles: TextStyleConfig { text_bold: false },
+        options: HashMap::new(),
+    }
+}

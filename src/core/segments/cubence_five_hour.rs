@@ -122,6 +122,11 @@ fn format_duration(seconds: i64) -> String {
     }
 }
 
+/// ANSI 颜色代码
+const GREEN: &str = "\x1b[32m";
+const YELLOW: &str = "\x1b[33m";
+const RESET: &str = "\x1b[0m";
+
 fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     let mut metadata = HashMap::new();
 
@@ -138,12 +143,12 @@ fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     let reset_str = format_duration(data.get_five_hour_reset_seconds());
     let progress_bar = make_progress_bar(data.five_hour_percentage, 8);
 
-    // 主显示：5h窗口 [进度条] 36.1M/80M (1h6m)
+    // 主显示：5h [进度条(绿色)] 数字(黄色) (重置时间)
+    // 格式: 5h ████░░░░ $36.1/$80.0 (1h6m)
     let primary = format!(
-        "5h {} {}/{} ({})",
-        progress_bar,
-        used_fmt,
-        limit_fmt,
+        "5h {}{}{} {}{}/{}{} ({})",
+        GREEN, progress_bar, RESET,
+        YELLOW, used_fmt, limit_fmt, RESET,
         reset_str
     );
 

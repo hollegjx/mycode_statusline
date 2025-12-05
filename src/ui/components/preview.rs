@@ -271,6 +271,37 @@ impl PreviewComponent {
                         map
                     },
                 },
+                SegmentId::CubenceLatency => SegmentData {
+                    primary: "🟢 延迟: 256ms".to_string(),
+                    secondary: "".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("latency_ms".to_string(), "256".to_string());
+                        map.insert("status".to_string(), "ok".to_string());
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
+                SegmentId::CubenceSubscription => SegmentData {
+                    primary: "💎 Prism-剩余5d 12h".to_string(),
+                    secondary: "".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("plan_name".to_string(), "Prism".to_string());
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
+                SegmentId::CubenceMultiplier => SegmentData {
+                    primary: "\x1b[38;5;220m(x0.75)\x1b[0m".to_string(),
+                    secondary: "".to_string(),
+                    metadata: {
+                        let mut map = HashMap::new();
+                        map.insert("multiplier".to_string(), "0.75".to_string());
+                        map.insert("service".to_string(), "cubence".to_string());
+                        map
+                    },
+                },
             };
 
             segments_data.push((segment_config.clone(), mock_data));
