@@ -58,7 +58,10 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
 
     // 构建显示
     let mut metadata = HashMap::new();
-    metadata.insert("balance_usd".to_string(), format!("{:.2}", cubence_data.balance_usd));
+    metadata.insert(
+        "balance_usd".to_string(),
+        format!("{:.2}", cubence_data.balance_usd),
+    );
     metadata.insert("service".to_string(), "cubence".to_string());
 
     // 金色/黄色 ANSI 代码

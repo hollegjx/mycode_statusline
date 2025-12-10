@@ -94,14 +94,32 @@ fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     let mut metadata = HashMap::new();
 
     // 存储原始数据
-    metadata.insert("five_hour_used".to_string(), data.five_hour_used.to_string());
-    metadata.insert("five_hour_limit".to_string(), data.five_hour_limit.to_string());
-    metadata.insert("five_hour_remaining".to_string(), data.five_hour_remaining.to_string());
-    metadata.insert("five_hour_percentage".to_string(), format!("{:.1}", data.five_hour_percentage));
+    metadata.insert(
+        "five_hour_used".to_string(),
+        data.five_hour_used.to_string(),
+    );
+    metadata.insert(
+        "five_hour_limit".to_string(),
+        data.five_hour_limit.to_string(),
+    );
+    metadata.insert(
+        "five_hour_remaining".to_string(),
+        data.five_hour_remaining.to_string(),
+    );
+    metadata.insert(
+        "five_hour_percentage".to_string(),
+        format!("{:.1}", data.five_hour_percentage),
+    );
     metadata.insert("weekly_used".to_string(), data.weekly_used.to_string());
     metadata.insert("weekly_limit".to_string(), data.weekly_limit.to_string());
-    metadata.insert("weekly_remaining".to_string(), data.weekly_remaining.to_string());
-    metadata.insert("weekly_percentage".to_string(), format!("{:.1}", data.weekly_percentage));
+    metadata.insert(
+        "weekly_remaining".to_string(),
+        data.weekly_remaining.to_string(),
+    );
+    metadata.insert(
+        "weekly_percentage".to_string(),
+        format!("{:.1}", data.weekly_percentage),
+    );
     metadata.insert("service".to_string(), "cubence".to_string());
 
     // 格式化显示

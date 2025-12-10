@@ -565,7 +565,9 @@ pub fn get_usage_url_from_claude_settings() -> Option<String> {
     let vendor = detect_vendor_from_url(base_url);
     match vendor {
         VendorType::Uucode => Some("https://api.uucode.org/account/billing".to_string()),
-        VendorType::Cubence => Some("https://cubence.com/api/v1/user/subscription-info".to_string()),
+        VendorType::Cubence => {
+            Some("https://cubence.com/api/v1/user/subscription-info".to_string())
+        }
         VendorType::Unknown => None,
     }
 }

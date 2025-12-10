@@ -11,7 +11,10 @@ use std::time::{Duration, Instant};
 
 /// Cubence 线路配置
 const CUBENCE_ENDPOINTS: &[(&str, &str)] = &[
-    ("api-dmit.cubence.com", "https://api-dmit.cubence.com/health"),
+    (
+        "api-dmit.cubence.com",
+        "https://api-dmit.cubence.com/health",
+    ),
     ("api-bwg.cubence.com", "https://api-bwg.cubence.com/health"),
     ("api-cf.cubence.com", "https://api-cf.cubence.com/health"),
     ("api.cubence.com", "https://api.cubence.com/health"),

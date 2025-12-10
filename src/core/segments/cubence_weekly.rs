@@ -137,8 +137,14 @@ fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     // 存储原始数据
     metadata.insert("weekly_used".to_string(), data.weekly_used.to_string());
     metadata.insert("weekly_limit".to_string(), data.weekly_limit.to_string());
-    metadata.insert("weekly_remaining".to_string(), data.weekly_remaining.to_string());
-    metadata.insert("weekly_percentage".to_string(), format!("{:.1}", data.weekly_percentage));
+    metadata.insert(
+        "weekly_remaining".to_string(),
+        data.weekly_remaining.to_string(),
+    );
+    metadata.insert(
+        "weekly_percentage".to_string(),
+        format!("{:.1}", data.weekly_percentage),
+    );
     metadata.insert("service".to_string(), "cubence".to_string());
 
     // 格式化显示
@@ -151,9 +157,7 @@ fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     // 格式: 周 █████░░░ $121.0/$200.0 (3d5h)
     let primary = format!(
         "周 {}{}{} {}{}/{}{} ({})",
-        GREEN, progress_bar, RESET,
-        YELLOW, used_fmt, limit_fmt, RESET,
-        reset_str
+        GREEN, progress_bar, RESET, YELLOW, used_fmt, limit_fmt, RESET, reset_str
     );
 
     Some(SegmentData {

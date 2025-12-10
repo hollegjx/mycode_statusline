@@ -149,9 +149,18 @@ pub fn collect(config: &Config, _input: &InputData) -> Option<SegmentData> {
     }
 
     let mut metadata = HashMap::new();
-    metadata.insert("plan_name".to_string(), subscription.subscription.plan.name.clone());
-    metadata.insert("end_date".to_string(), subscription.subscription.end_date.clone());
-    metadata.insert("status".to_string(), subscription.subscription.status.clone());
+    metadata.insert(
+        "plan_name".to_string(),
+        subscription.subscription.plan.name.clone(),
+    );
+    metadata.insert(
+        "end_date".to_string(),
+        subscription.subscription.end_date.clone(),
+    );
+    metadata.insert(
+        "status".to_string(),
+        subscription.subscription.status.clone(),
+    );
 
     // 计算剩余时间
     let (days, hours) = calculate_remaining(&subscription.subscription.end_date)?;

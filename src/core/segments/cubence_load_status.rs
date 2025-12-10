@@ -154,7 +154,10 @@ fn get_status_display(load_level: &str, load_percentage: f64) -> (String, String
             let status_emoji = "😎";
             // 绿色数字
             (
-                format!("{} 负载[{}{}%{}-使劲蹬{}]", emoji, GREEN, percent, RESET, status_emoji),
+                format!(
+                    "{} 负载[{}{}%{}-使劲蹬{}]",
+                    emoji, GREEN, percent, RESET, status_emoji
+                ),
                 "normal".to_string(),
             )
         }
@@ -163,7 +166,10 @@ fn get_status_display(load_level: &str, load_percentage: f64) -> (String, String
             let status_emoji = "😰";
             // 黄色数字
             (
-                format!("{} 负载[{}{}%{}-轻点蹬{}]", emoji, YELLOW, percent, RESET, status_emoji),
+                format!(
+                    "{} 负载[{}{}%{}-轻点蹬{}]",
+                    emoji, YELLOW, percent, RESET, status_emoji
+                ),
                 "warning".to_string(),
             )
         }
@@ -172,7 +178,10 @@ fn get_status_display(load_level: &str, load_percentage: f64) -> (String, String
             let status_emoji = "🥵";
             // 红色数字
             (
-                format!("{} 负载[{}{}%{}-蹬炸了{}]", emoji, RED, percent, RESET, status_emoji),
+                format!(
+                    "{} 负载[{}{}%{}-蹬炸了{}]",
+                    emoji, RED, percent, RESET, status_emoji
+                ),
                 "emergency".to_string(),
             )
         }

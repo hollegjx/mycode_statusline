@@ -122,8 +122,18 @@ fn fetch_multiplier(token: &str) -> Result<f64, String> {
         1.0
     };
 
-    let claude_code_mult = if resp.data.pricing_multiplier.by_service.claude_code.is_active {
-        resp.data.pricing_multiplier.by_service.claude_code.multiplier
+    let claude_code_mult = if resp
+        .data
+        .pricing_multiplier
+        .by_service
+        .claude_code
+        .is_active
+    {
+        resp.data
+            .pricing_multiplier
+            .by_service
+            .claude_code
+            .multiplier
     } else {
         1.0
     };

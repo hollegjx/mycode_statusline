@@ -1,8 +1,8 @@
-use std::io::{self, IsTerminal};
 use mycode::cli::Cli;
 use mycode::config::{Config, InputData};
 use mycode::core::{collect_all_segments, StatusLineGenerator};
 use mycode::wrapper::{find_claude_code, injector::ClaudeCodeInjector};
+use std::io::{self, IsTerminal};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Migrate legacy config directory if needed

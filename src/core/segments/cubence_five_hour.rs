@@ -131,10 +131,22 @@ fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     let mut metadata = HashMap::new();
 
     // 存储原始数据
-    metadata.insert("five_hour_used".to_string(), data.five_hour_used.to_string());
-    metadata.insert("five_hour_limit".to_string(), data.five_hour_limit.to_string());
-    metadata.insert("five_hour_remaining".to_string(), data.five_hour_remaining.to_string());
-    metadata.insert("five_hour_percentage".to_string(), format!("{:.1}", data.five_hour_percentage));
+    metadata.insert(
+        "five_hour_used".to_string(),
+        data.five_hour_used.to_string(),
+    );
+    metadata.insert(
+        "five_hour_limit".to_string(),
+        data.five_hour_limit.to_string(),
+    );
+    metadata.insert(
+        "five_hour_remaining".to_string(),
+        data.five_hour_remaining.to_string(),
+    );
+    metadata.insert(
+        "five_hour_percentage".to_string(),
+        format!("{:.1}", data.five_hour_percentage),
+    );
     metadata.insert("service".to_string(), "cubence".to_string());
 
     // 格式化显示
@@ -147,9 +159,7 @@ fn build_segment_data(data: &CubenceData) -> Option<SegmentData> {
     // 格式: 5h ████░░░░ $36.1/$80.0 (1h6m)
     let primary = format!(
         "5h {}{}{} {}{}/{}{} ({})",
-        GREEN, progress_bar, RESET,
-        YELLOW, used_fmt, limit_fmt, RESET,
-        reset_str
+        GREEN, progress_bar, RESET, YELLOW, used_fmt, limit_fmt, RESET, reset_str
     );
 
     Some(SegmentData {

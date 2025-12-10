@@ -315,7 +315,7 @@ pub fn cubence_weekly_segment() -> SegmentConfig {
         },
         colors: ColorConfig {
             icon: Some(AnsiColor::Color256 { c256: 208 }), // Orange
-            text: Some(AnsiColor::Color256 { c256: 255 }),  // White
+            text: Some(AnsiColor::Color256 { c256: 255 }), // White
             background: None,
         },
         styles: TextStyleConfig { text_bold: false },

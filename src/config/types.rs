@@ -77,14 +77,14 @@ pub enum SegmentId {
     UucodeSubscription,
     UucodeStatus,
     CubenceBalance,
-    CubenceUsage,      // 保留用于兼容，但不再使用
-    CubenceStatus,     // 改为 Cubence 标识段 (🦢 Cubence)
-    CubenceFiveHour,   // 5小时窗口段（带进度条）
-    CubenceWeekly,     // 周窗口段（带进度条）
-    CubenceLoadStatus, // Claude Pool 负载状态段
-    CubenceLatency,    // Cubence API 延迟段
+    CubenceUsage,        // 保留用于兼容，但不再使用
+    CubenceStatus,       // 改为 Cubence 标识段 (🦢 Cubence)
+    CubenceFiveHour,     // 5小时窗口段（带进度条）
+    CubenceWeekly,       // 周窗口段（带进度条）
+    CubenceLoadStatus,   // Claude Pool 负载状态段
+    CubenceLatency,      // Cubence API 延迟段
     CubenceSubscription, // Cubence 订阅段
-    CubenceMultiplier, // Cubence 价格倍率段
+    CubenceMultiplier,   // Cubence 价格倍率段
 }
 
 // Legacy compatibility structure
