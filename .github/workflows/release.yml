@@ -66,6 +66,9 @@ jobs:
           else
             cp target/${{ matrix.target }}/release/mycode dist/${{ matrix.artifact_name }}
             cp target/${{ matrix.target }}/release/mycode npm/platforms/${{ matrix.npm_platform }}/mycode
+            # Ensure executable permissions for Linux/macOS
+            chmod +x dist/${{ matrix.artifact_name }}
+            chmod +x npm/platforms/${{ matrix.npm_platform }}/mycode
           fi
 
       - name: Upload artifact
